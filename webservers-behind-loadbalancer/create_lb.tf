@@ -10,7 +10,7 @@ resource "aws_elb" "LoadBalancer" {
     lb_protocol       = "http"
   }
 
-  instances                   = [aws_instance.WebServer-1.id, aws_instance.WebServer-2.id]
+  instances                   = aws_instance.WebServers.*.id
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true
@@ -20,3 +20,8 @@ resource "aws_elb" "LoadBalancer" {
     "Terraform" : "true"
   }
 }
+
+output "LoadBalancer-URL" {
+  value = aws_elb.LoadBalancer.dns_name
+}
+
