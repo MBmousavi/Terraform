@@ -1,0 +1,10 @@
+variable "autoscaling_group_max_size" {}
+variable "autoscaling_group_min_size" {}
+variable "region" {}
+variable "certificate_arn" {}
+variable "rds_instance_identifier" {}
+variable "database_name" {}
+variable "database_password" {}
+variable "database_user" {}
+variable "route53_hosted_zone_name" {}
+variable "vpc_cidr" {}
