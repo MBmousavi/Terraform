@@ -1,0 +1,7 @@
+region                     = "eu-central-1"
+instance_count             = "2"
+ami                        = "ami-0a49b025fffbbdac6"
+instance_type              = "t2.micro"
+key_name                   = "mykey-2"
+ssh_key_private            = "/home/ubuntu/mykey-2.pem"
+inventory_file             = "ip.txt"
