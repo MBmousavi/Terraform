@@ -53,13 +53,13 @@ resource "local_file" "ip" {
 resource "null_resource" "test_ansible" {
   depends_on = [ local_file.ip, ]
   provisioner "local-exec" {
-  command = "sleep 60; ansible -i '${var.inventory_file}' all  --private-key ${var.ssh_key_private} -m ping"
+  command = "sleep 20; ansible -i '${var.inventory_file}' all -T 20 --private-key ${var.ssh_key_private} -m ping"
     }
 }
 
 resource "null_resource" "install_nginx" {
   depends_on = [ null_resource.test_ansible, ]
   provisioner "local-exec" {
-  command = "ansible-playbook -i '${var.inventory_file}'  --private-key ${var.ssh_key_private} nginx_install.yml"
+  command = "ansible-playbook -i '${var.inventory_file}' -T 30 --private-key ${var.ssh_key_private} nginx_install.yml"
     }
 }
